@@ -96,3 +96,8 @@ This VS Code extension was inspired by [joshxviii/animalese-typing](https://gith
 **Enjoy your cozy coding experience! 🏝️✨**
 
 *Made with ❤️ for developers who love delightful experiences*
+
+---
+
+**English** | [한국어](README-ko.md)
+
