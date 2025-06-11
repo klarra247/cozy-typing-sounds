@@ -1,0 +1,73 @@
+{
+  "name": "cozy-typing-sounds",
+  "displayName": "Cozy Typing Sounds",
+  "description": "Adorable typing sounds inspired by Animal Crossing. Makes coding feel warm and relaxing! 🏝️🎵",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "cozyTypingSounds.toggle",
+        "title": "Toggle Cozy Typing Sounds"
+      }
+    ],
+    "configuration": {
+      "title": "Cozy Typing Sounds",
+      "properties": {
+        "cozyTypingSounds.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable typing sounds"
+        },
+        "cozyTypingSounds.volume": {
+          "type": "number",
+          "default": 0.5,
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Volume level for typing sounds (0.0 to 1.0)"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^20.19.0",
+    "@types/vscode": "^1.100.0",
+    "@typescript-eslint/eslint-plugin": "^8.31.1",
+    "@typescript-eslint/parser": "^8.31.1",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.5.2",
+    "eslint": "^9.25.1",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "node-wav-player": "^1.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/klarra247/cozy-typing-sounds.git"
+  },
+  "bugs": {
+    "url": "https://github.com/klarra247/cozy-typing-sounds/issues"
+  },
+  "homepage": "https://github.com/klarra247/cozy-typing-sounds#readme",
+  "license": "MIT",
+  "icon": "icon.png"
+}
