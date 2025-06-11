@@ -75,11 +75,11 @@ class SoundPlayer {
             { viewColumn: vscode.ViewColumn.Beside, preserveFocus: true },
             {
                 enableScripts: true,
-                localResourceRoots: [vscode.Uri.file(path.join(this.context.extensionPath, 'sounds'))]
+                localResourceRoots: [vscode.Uri.file(path.join(this.context.extensionPath, 'sounds'))],
+                retainContextWhenHidden: true
             }
         );
 
-        this.webviewPanel.reveal(undefined, true);
         this.webviewPanel.webview.html = this.getWebviewContent();
         this.webviewPanel.onDidDispose(() => {
             this.webviewPanel = undefined;
@@ -126,10 +126,10 @@ class SoundPlayer {
             </head>
             <body>
                 <h2>🎵 Cozy Typing Sounds</h2>
-                <p>사운드 재생 준비 완료!</p>
+                <p>Ready to Play Sounds!</p>
                 <div class="info">
-                    <p>타이핑하면 동물의 숲 효과음이 재생됩니다!</p>
-                    <p>Ctrl+Shift+P → "Toggle Cozy Typing Sounds"로 끄고 켤 수 있어요.</p>
+                    <p>Typing will play Animal Crossing sound effects!</p>
+                    <p>Press Ctrl+Shift+P → "Toggle Cozy Typing Sounds" to turn it on and off.</p>
                 </div>
                 
                 <script>
@@ -191,15 +191,29 @@ class SoundPlayer {
         `;
     }
 
+    public hideWebview() {
+        if (this.webviewPanel) {
+            // 웹뷰를 숨기지만 dispose하지는 않음
+            this.webviewPanel.dispose();
+            this.webviewPanel = undefined;
+            // 바로 재생성 (백그라운드에서)
+            this.initializeWebview();
+        }
+    }
+
     private playSound(soundFile: string) {
         if (!this.webviewPanel) {
             console.log('❌ webviewPanel이 없음 - 재초기화 시도');
             this.initializeWebview();
+            // 재초기화 후 잠시 기다린 다음 재시도
+            setTimeout(() => {
+                this.playSound(soundFile);
+            }, 100);
             return;
         }
 
         const config = vscode.workspace.getConfiguration('cozyTypingSounds');
-        const volume = Math.min(1.0, Math.max(0.0, config.get<number>('volume', 0.5))); // 0~1 범위 제한
+        const volume = Math.min(1.0, Math.max(0.0, config.get<number>('volume', 0.5)));
 
         this.webviewPanel.webview.postMessage({
             command: 'playSound',
@@ -269,8 +283,13 @@ export function activate(context: vscode.ExtensionContext) {
 
     const toggleCommand = vscode.commands.registerCommand('cozyTypingSounds.toggle', () => {
         isEnabled = !isEnabled;
+
+        if (!isEnabled) {
+            soundPlayer.hideWebview(); // 비활성화 시 웹뷰 숨기기
+        }
+
         vscode.window.showInformationMessage(
-            `동물의 숲 타이핑 사운드 ${isEnabled ? '활성화' : '비활성화'}됨`
+            `Cozy Typing Sound ${isEnabled ? 'Enabled' : 'Disabled'}`
         );
     });
 
