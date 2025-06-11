@@ -42,8 +42,8 @@ Make your coding experience warm and delightful with adorable typing sounds! Ins
 
 ```json
 {
-  "cozyTypingSounds.enabled": true,    // Enable/disable sounds
-  "cozyTypingSounds.volume": 0.5       // Volume (0.0 to 1.0)
+  "cozyTypingSounds.enabled": true,  
+  "cozyTypingSounds.volume": 0.5    
 }
 ```
 
@@ -57,7 +57,7 @@ Make your coding experience warm and delightful with adorable typing sounds! Ins
 
 - Uses Web Audio API for crisp, low-latency sound playback
 - Lightweight webview for audio processing
-- Optimized for performance with smart caching
+- Pre-loading all sound files for instant playback
 - Compatible with VS Code 1.74.0+
 
 ## 🐛 Troubleshooting
