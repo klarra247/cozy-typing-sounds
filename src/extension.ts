@@ -70,8 +70,8 @@ class SoundPlayer {
 
     private initializeWebview() {
         this.webviewPanel = vscode.window.createWebviewPanel(
-            'animalCrossingSounds',
-            'Animal Crossing Sounds',
+            'cozyTypingSounds',
+            'Cozy Typing Sounds',
             { viewColumn: vscode.ViewColumn.Beside, preserveFocus: true },
             {
                 enableScripts: true,
@@ -125,11 +125,11 @@ class SoundPlayer {
                 </style>
             </head>
             <body>
-                <h2>🎵 Animal Crossing Typing Sounds</h2>
+                <h2>🎵 Cozy Typing Sounds</h2>
                 <p>사운드 재생 준비 완료!</p>
                 <div class="info">
                     <p>타이핑하면 동물의 숲 효과음이 재생됩니다!</p>
-                    <p>Ctrl+Shift+P → "Toggle Animal Crossing Typing Sounds"로 끄고 켤 수 있어요.</p>
+                    <p>Ctrl+Shift+P → "Toggle Cozy Typing Sounds"로 끄고 켤 수 있어요.</p>
                 </div>
                 
                 <script>
@@ -198,7 +198,7 @@ class SoundPlayer {
             return;
         }
 
-        const config = vscode.workspace.getConfiguration('animalCrossingTyping');
+        const config = vscode.workspace.getConfiguration('cozyTypingSounds');
         const volume = Math.min(1.0, Math.max(0.0, config.get<number>('volume', 0.5))); // 0~1 범위 제한
 
         this.webviewPanel.webview.postMessage({
@@ -267,7 +267,7 @@ export function activate(context: vscode.ExtensionContext) {
     const soundPlayer = new SoundPlayer(context);
     let isEnabled = true;
 
-    const toggleCommand = vscode.commands.registerCommand('animalCrossingTyping.toggle', () => {
+    const toggleCommand = vscode.commands.registerCommand('cozyTypingSounds.toggle', () => {
         isEnabled = !isEnabled;
         vscode.window.showInformationMessage(
             `동물의 숲 타이핑 사운드 ${isEnabled ? '활성화' : '비활성화'}됨`
@@ -280,7 +280,7 @@ export function activate(context: vscode.ExtensionContext) {
     const deleteThrottleMs = 100;
 
     const textChangeListener = vscode.workspace.onDidChangeTextDocument((event) => {
-        const config = vscode.workspace.getConfiguration('animalCrossingTyping');
+        const config = vscode.workspace.getConfiguration('cozyTypingSounds');
         const enabled = config.get<boolean>('enabled', true);
 
         if (!enabled || !isEnabled) return;

@@ -1,6 +1,6 @@
-# animal-crossing-typing README
+# cozy-typing-sounds README
 
-This is the README for your extension "animal-crossing-typing". After writing up a brief description, we recommend including the following sections.
+This is the README for your extension "cozy-typing-sounds". After writing up a brief description, we recommend including the following sections.
 
 ## Features
 
