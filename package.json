@@ -3,6 +3,7 @@
   "displayName": "Cozy Typing Sounds",
   "description": "Adorable typing sounds inspired by Animal Crossing. Makes coding feel warm and relaxing! 🏝️🎵",
   "version": "0.0.1",
+  "publisher": "Sihyeon Lee",
   "engines": {
     "vscode": "^1.74.0"
   },
