@@ -1,71 +1,103 @@
-# cozy-typing-sounds README
+# 🎵 Cozy Typing Sounds
 
-This is the README for your extension "cozy-typing-sounds". After writing up a brief description, we recommend including the following sections.
+Make your coding experience warm and delightful with adorable typing sounds! Inspired by Animal Crossing, every keystroke brings a smile to your face.
 
-## Features
+## ✨ Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+- **Cute typing sounds** for every character (A-Z, 0-9, special characters)
+- **Korean language support**
+- **Special key sounds** (Enter, Backspace, Arrow keys, etc.)
+- **Volume control** - adjust to your preference
+- **Easy toggle** - turn on/off with a simple command
+- **Smart filtering** - won't interfere with logs or auto-generated files
 
-For example if there is an image subfolder under your extension project workspace:
+## 🎮 How to Use
 
-\!\[feature X\]\(images/feature-x.png\)
+### Installation
+1. Install from VS Code Marketplace
+2. The extension activates automatically when you start typing!
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+### Controls
+- **Toggle sounds**: `Ctrl+Shift+P` → "Toggle Cozy Typing Sounds"
+- **Volume control**: 
+  - Method 1: `Ctrl + ,` (Settings) → search "Cozy Typing" → adjust volume (0.0 - 1.0)
+  - Method 2: Go to File → Preferences → Settings → search "Cozy Typing"
 
-## Requirements
+## 🎹 Supported Keys
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+### Letters & Numbers
+- **A-Z**: Each letter has its unique sound
+- **0-9**: Number sounds for digits
+- **Korean**: 한글 지원!
 
-## Extension Settings
+### Special Characters
+- **Punctuation**: `. , ; : ' " ` - _ + = < > |`
+- **Symbols**: `& * @ { } [ ] ^ $ ! ( ) % # ? \ / ~`
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+### Special Keys
+- **Navigation**: Arrow keys, Home, End, Page Up/Down
+- **Editing**: Backspace, Delete, Enter, Tab
 
-For example:
+## ⚙️ Settings
 
-This extension contributes the following settings:
+```json
+{
+  "cozyTypingSounds.enabled": true,  
+  "cozyTypingSounds.volume": 0.5    
+}
+```
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+## 🎯 Smart Features
 
-## Known Issues
+- **File filtering**: Automatically excludes log files, JSON configs, and system files
+- **Korean IME support**: Handles Korean input method gracefully
+- **Background operation**: Runs quietly without interfering with your workflow
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+## 🛠️ Technical Details
 
-## Release Notes
+- Uses Web Audio API for crisp, low-latency sound playback
+- Lightweight webview for audio processing
+- Pre-loading all sound files for instant playback
+- Compatible with VS Code 1.74.0+
 
-Users appreciate release notes as you update your extension.
+## 🐛 Troubleshooting
+
+### No sound playing?
+1. Check if the extension is enabled: `Ctrl+Shift+P` → "Toggle Cozy Typing Sounds"
+2. Verify volume settings in VS Code settings
+3. Make sure your system audio is working
+
+### Sounds cutting off?
+- Try reducing the volume in settings
+- Close and reopen VS Code to reset audio context
+
+## 📝 Release Notes
 
 ### 1.0.0
+- Initial release
+- Full alphabet, number, and special character support
+- Korean language support
+- Volume control
+- Smart file filtering
 
-Initial release of ...
+## 🤝 Contributing
 
-### 1.0.1
+Found a bug or want to contribute? 
+- Report issues on [GitHub](https://github.com/your-username/cozy-typing-sounds/issues)
+- Submit pull requests for improvements
 
-Fixed issue #.
 
-### 1.1.0
+## 🎵 Sound Credits & Inspiration
 
-Added features X, Y, and Z.
+This VS Code extension was inspired by [joshxviii/animalese-typing](https://github.com/joshxviii/animalese-typing/tree/chrome) Chrome extension. Sound files are sourced from the same repository - thank you for the amazing audio assets and the brilliant idea!
 
 ---
 
-## Following extension guidelines
+**Enjoy your cozy coding experience! 🏝️✨**
 
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
+*Made with ❤️ for developers who love delightful experiences*
 
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
+---
 
-## Working with Markdown
+**English** | [한국어](README-ko.md)
 
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
